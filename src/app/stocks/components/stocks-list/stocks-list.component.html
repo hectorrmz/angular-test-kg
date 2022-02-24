@@ -1,0 +1,18 @@
+<mat-card class="page-container">
+  <mat-card-header>
+    <mat-card-title>Stocks </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+    <mat-spinner
+      class="loading-spinner"
+      color="accent"
+      *ngIf="!(stocks$ | async)"
+    ></mat-spinner>
+
+    <section class="stocks" *ngIf="stocks$ | async">
+      <app-stock-item [stock]="stock" *ngFor="let stock of stocks$ | async">{{
+        stock.name
+      }}</app-stock-item>
+    </section>
+  </mat-card-content>
+</mat-card>

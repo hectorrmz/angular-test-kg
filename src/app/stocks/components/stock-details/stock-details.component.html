@@ -1,0 +1,19 @@
+<button mat-button color="primary" routerLink="..">
+  <mat-icon>keyboard_arrow_left</mat-icon>Back to Stocks
+</button>
+<mat-card class="page-container">
+  <mat-card-header>
+    <mat-card-title>{{ (stock$ | async)?.name }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+    <mat-spinner
+      *ngIf="!(stock$ | async)"
+      class="loading-spinner"
+      color="accent"
+    ></mat-spinner>
+
+    <section class="stock" *ngIf="stock$ | async">
+      {{ stock$ | async | json }}
+    </section>
+  </mat-card-content>
+</mat-card>

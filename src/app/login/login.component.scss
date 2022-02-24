@@ -1,0 +1,18 @@
+.login-container {
+  margin: 40px auto;
+  display: block;
+  max-width: 450px;
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-content {
+    margin: 10px 0;
+  }
+  .actions-container {
+    text-align: right;
+    padding: 10px;
+  }
+}
