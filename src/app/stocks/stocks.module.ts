@@ -8,9 +8,20 @@ import { StockItemComponent } from './components/stock-item/stock-item.component
 import { StockDetailsComponent } from './components/stock-details/stock-details.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+
+import { StockSearchComponent } from './stock-search/stock-search.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { StockGroupsComponent } from './stock-groups/stock-groups.component';
+import { StockGroupFormComponent } from './stock-groups/stock-group-form/stock-group-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const routes: Routes = [
   { path: '', component: StocksListComponent },
+  { path: 'search', component: StockSearchComponent },
+  { path: 'groups', component: StockGroupsComponent },
   { path: ':id', component: StockDetailsComponent },
 ];
 
@@ -19,6 +30,9 @@ const routes: Routes = [
     StocksListComponent,
     StockItemComponent,
     StockDetailsComponent,
+    StockSearchComponent,
+    StockGroupsComponent,
+    StockGroupFormComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +41,12 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatButtonModule,
     MatIconModule,
+    MatChipsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatTableModule,
+    MatTabsModule,
   ],
 })
 export class StocksModule {}

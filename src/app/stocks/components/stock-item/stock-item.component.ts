@@ -8,7 +8,7 @@ import { Stock } from 'src/app/models';
   styleUrls: ['./stock-item.component.scss'],
 })
 export class StockItemComponent implements OnInit {
-  @Input() stock: Stock;
+  @Input() stock: any;
 
   constructor(private router: Router) {}
 

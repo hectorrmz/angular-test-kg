@@ -1,7 +1,7 @@
 const express = require("express");
 var bodyParser = require("body-parser");
 const axios = require("axios").default;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 const app = express();
 
@@ -17,7 +17,8 @@ const server = app.listen(PORT, () => {
 
 app.get("/api/status", async (req, res) => {
   console.log(req.url);
-  const response = await axios.get("https://swapi.dev/api/people/1");
+  const response = await axios.get("https://nodejs.org/");
+  console.log(response.data);
   res.status(200).send(response.data);
-  res.end();
+  res.set("Connection", "close");
 });

@@ -1,0 +1,14 @@
+.search-box {
+  padding: 20px;
+  display: flex;
+
+  .search-input {
+    min-width: 400px;
+    margin-right: 20px;
+  }
+}
+
+.stocks-table {
+  padding: 20px;
+  display: block;
+}
