@@ -1,14 +1,23 @@
 const express = require("express");
+var bodyParser = require("body-parser");
 const axios = require("axios").default;
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
-app.get("/test", async (req, res) => {
-  console.log(req.url);
+app.use(bodyParser.json());
 
-  const response = await axios.get("https://google.com");
+var distDir = __dirname + "/dist/angular-app";
+app.use(express.static(distDir));
 
-  res.send(JSON.stringify(response.data));
-  res.end();
+const server = app.listen(PORT, () => {
+  const port = server.address().port;
+  console.log("App now running on port", port);
 });
 
-app.listen(3000, () => console.log("Listening"));
+app.get("/api/status", async (req, res) => {
+  console.log(req.url);
+  const response = await axios.get("https://swapi.dev/api/people/1");
+  res.status(200).send(response.data);
+  res.end();
+});
