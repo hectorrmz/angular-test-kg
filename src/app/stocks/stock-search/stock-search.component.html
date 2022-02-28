@@ -3,34 +3,16 @@
     <mat-tab-group>
       <mat-tab label="Search Stocks">
         <div class="search-box">
-          <mat-form-field class="search-input" appearance="outline">
-            <mat-label>Stock Codes</mat-label>
-            <mat-chip-list #chipList aria-label="Stock Search">
-              <mat-chip
-                color="accent"
-                [selected]="true"
-                *ngFor="let stock of stocks"
-                (removed)="remove(stock)"
-              >
-                {{ stock }}
-                <button matChipRemove>
-                  <mat-icon>cancel</mat-icon>
-                </button>
-              </mat-chip>
-              <input
-                placeholder="Add Stock Codes..."
-                [matChipInputFor]="chipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputAddOnBlur]="addOnBlur"
-                (matChipInputTokenEnd)="add($event)"
-              />
-            </mat-chip-list>
-          </mat-form-field>
+          <app-symbol-selector
+            width="480px"
+            (stockSymbolsChanged)="stocks = $event"
+          ></app-symbol-selector>
 
           <button
             mat-fab
             color="accent"
             aria-label="Example icon button with a delete icon"
+            (click)="searchStocks()"
           >
             <mat-icon>search</mat-icon>
           </button>
@@ -41,4 +23,7 @@
   </mat-card-content>
 </mat-card>
 
-<app-stocks-list class="stocks-table"></app-stocks-list>
+<app-stocks-list
+  [stocks]="(stocks$ | async) || []"
+  class="stocks-table"
+></app-stocks-list>

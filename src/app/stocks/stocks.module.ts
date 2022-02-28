@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StocksListComponent } from './components/stocks-list/stocks-list.component';
+import { StocksListComponent } from './stock-search/stocks-list/stocks-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -17,9 +17,9 @@ import { StockGroupsComponent } from './stock-groups/stock-groups.component';
 import { StockGroupFormComponent } from './stock-groups/stock-group-form/stock-group-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
-  { path: '', component: StocksListComponent },
   { path: 'search', component: StockSearchComponent },
   { path: 'groups', component: StockGroupsComponent },
   { path: ':id', component: StockDetailsComponent },
@@ -47,6 +47,7 @@ const routes: Routes = [
     MatButtonModule,
     MatTableModule,
     MatTabsModule,
+    SharedModule,
   ],
 })
 export class StocksModule {}

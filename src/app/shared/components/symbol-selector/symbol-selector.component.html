@@ -1,0 +1,23 @@
+<mat-form-field [style.width]="width" appearance="outline">
+  <mat-label>Stock Codes</mat-label>
+  <mat-chip-list #chipList aria-label="Stock Search">
+    <mat-chip
+      color="accent"
+      [selected]="true"
+      *ngFor="let stock of stocks"
+      (removed)="remove(stock)"
+    >
+      {{ stock }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input
+      placeholder="Add Stock Codes..."
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="true"
+      (matChipInputTokenEnd)="add($event)"
+    />
+  </mat-chip-list>
+</mat-form-field>

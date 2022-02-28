@@ -15,9 +15,6 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
