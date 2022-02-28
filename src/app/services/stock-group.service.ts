@@ -25,7 +25,7 @@ export class StockGroupService {
   stockGroups = new BehaviorSubject<StockGroup[]>([]);
 
   constructor() {
-    this.groups = MOCKED_GROUPS;
+    this.groups = [];
     this.stockGroups.next(this.groups);
   }
 

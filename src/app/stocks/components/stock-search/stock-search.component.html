@@ -19,6 +19,11 @@
         </div>
       </mat-tab>
       <mat-tab label="Stock Groups">
+        <div class="stock-groups-actions">
+          <button mat-flat-button color="primary" [routerLink]="['groups']">
+            <mat-icon>add</mat-icon> New Group
+          </button>
+        </div>
         <app-stock-groups-list
           [canSearch]="true"
           (searchStockGroupSelected)="searchStocksSelected($event)"

@@ -1,4 +1,4 @@
-<mat-list>
+<mat-list *ngIf="(groups$ | async)?.length! > 0">
   <mat-list-item *ngFor="let group of groups$ | async">
     <mat-icon mat-list-icon>trending_up</mat-icon>
     <div mat-line>{{ group.name }}</div>
@@ -26,3 +26,7 @@
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
+
+<div class="no-groups-message" *ngIf="(groups$ | async)?.length! === 0">
+  No Stock Groups Available
+</div>
