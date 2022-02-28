@@ -52,6 +52,7 @@ const routes: Routes = [
     MatTableModule,
     MatTabsModule,
     MatListModule,
+    MatProgressSpinnerModule,
 
     SharedModule,
   ],

@@ -33,7 +33,11 @@
   </mat-card-content>
 </mat-card>
 
-<app-stocks-list
-  [stocks]="(stocks$ | async) || []"
-  class="stocks-table"
-></app-stocks-list>
+<div class="stock-result-content">
+  <mat-spinner *ngIf="isLoading" class="loading-spinner"></mat-spinner>
+
+  <app-stocks-list
+    [stocks]="(stocks$ | async) || []"
+    class="stocks-table"
+  ></app-stocks-list>
+</div>
