@@ -5,7 +5,7 @@
       color="accent"
       [selected]="true"
       *ngFor="let stock of stocks"
-      (removed)="remove(stock)"
+      (removed)="removeStock(stock)"
     >
       {{ stock }}
       <button matChipRemove>
@@ -17,7 +17,7 @@
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
       [matChipInputAddOnBlur]="true"
-      (matChipInputTokenEnd)="add($event)"
+      (matChipInputTokenEnd)="addStock($event)"
     />
   </mat-chip-list>
 </mat-form-field>

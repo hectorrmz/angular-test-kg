@@ -23,4 +23,18 @@ describe('StocksListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set table headers', () => {
+    expect(component.displayedColumns).toEqual([
+      'longName',
+      'symbol',
+      'ask',
+      'askSize',
+      'currency',
+      'quoteSourceName',
+      'exchangeTimezoneName',
+      'marketState',
+      'averageDailyVolume10Day',
+    ]);
+  });
 });

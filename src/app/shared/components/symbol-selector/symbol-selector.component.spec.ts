@@ -25,4 +25,34 @@ describe('SymbolSelectorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('addStock()', () => {
+    const value = 'AMZN';
+
+    beforeEach(() => {
+      component.stocks = [];
+      component.addStock({
+        value,
+        chipInput: { clear: jasmine.createSpy() },
+      } as any);
+    });
+
+    it('should add new stock to stocks array', () => {
+      expect(component.stocks.length).toBe(1);
+      expect(component.stocks[0]).toBe(value);
+    });
+  });
+
+  describe('removeStock()', () => {
+    const value = 'AMZN';
+
+    beforeEach(() => {
+      component.stocks = ['AMZN'];
+      component.removeStock(value);
+    });
+
+    it('should remove stock from stocks array', () => {
+      expect(component.stocks.length).toBe(0);
+    });
+  });
 });

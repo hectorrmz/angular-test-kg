@@ -13,7 +13,7 @@ export class SymbolSelectorComponent {
 
   readonly separatorKeysCodes = [13, 188, 32] as const;
 
-  add(event: MatChipInputEvent): void {
+  addStock(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
     if (value) {
@@ -26,8 +26,8 @@ export class SymbolSelectorComponent {
     this.updateStockList();
   }
 
-  remove(fruit: string): void {
-    const index = this.stocks.indexOf(fruit);
+  removeStock(stock: string): void {
+    const index = this.stocks.indexOf(stock);
 
     if (index >= 0) {
       this.stocks.splice(index, 1);

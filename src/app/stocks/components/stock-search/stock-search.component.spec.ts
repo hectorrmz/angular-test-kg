@@ -12,6 +12,9 @@ import { SymbolSelectorComponent } from 'src/app/shared/components/symbol-select
 import { StockGroupsListComponent } from '../shared/stock-groups-list/stock-groups-list.component';
 import { StocksListComponent } from './stocks-list/stocks-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { StockService } from 'src/app/services/stock.service';
+import { spyStockService } from 'src/app/mocks/test';
+import { of } from 'rxjs';
 
 describe('StockSearchComponent', () => {
   let component: StockSearchComponent;
@@ -37,6 +40,12 @@ describe('StockSearchComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
       ],
+      providers: [
+        {
+          provide: StockService,
+          useValue: spyStockService,
+        },
+      ],
     }).compileComponents();
   });
 
@@ -48,5 +57,29 @@ describe('StockSearchComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('searchStocks()', () => {
+    const stocks = ['AMZN', 'TSLA', 'AAPL'];
+    beforeEach(() => {
+      component.stocks = stocks;
+      component.searchStocks();
+    });
+
+    it('should set stocks from stock service call', () => {
+      expect(spyStockService.getStocks).toHaveBeenCalledWith(stocks);
+      expect(component.stocks$).toBeDefined();
+    });
+  });
+
+  describe('searchStocks()', () => {
+    const stocks = ['AMZN', 'TSLA', 'AAPL'];
+    beforeEach(() => {
+      component.searchStocksSelected(stocks);
+    });
+
+    it('should map stocks selected', () => {
+      expect(component.stocks).toBe(stocks);
+    });
   });
 });
