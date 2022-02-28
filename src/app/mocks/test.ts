@@ -13,4 +13,9 @@ export const spyStockService = {
 export const spyStockGroupService = {
   getAll: jasmine.createSpy().and.returnValue(of([])),
   remove: jasmine.createSpy(),
+  add: jasmine.createSpy(),
 };
+
+export const spySessionStorage = {
+  setItem: jasmine.createSpy(),
+} as any;
