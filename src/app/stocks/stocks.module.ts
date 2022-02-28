@@ -18,6 +18,9 @@ import { StockGroupFormComponent } from './stock-groups/stock-group-form/stock-g
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '../shared/shared.module';
+import { MatListModule } from '@angular/material/list';
+import { StockGroupsListComponent } from './stock-groups/stock-groups-list/stock-groups-list.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'search', component: StockSearchComponent },
@@ -33,10 +36,12 @@ const routes: Routes = [
     StockSearchComponent,
     StockGroupsComponent,
     StockGroupFormComponent,
+    StockGroupsListComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
     MatCardModule,
     MatProgressSpinnerModule,
     MatButtonModule,
@@ -47,6 +52,7 @@ const routes: Routes = [
     MatButtonModule,
     MatTableModule,
     MatTabsModule,
+    MatListModule,
     SharedModule,
   ],
 })

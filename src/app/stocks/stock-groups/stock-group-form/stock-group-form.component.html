@@ -1,13 +1,20 @@
 <form class="stock-group-form">
   <mat-form-field appearance="outline" class="form-control">
     <mat-label>Name</mat-label>
-    <input matInput />
+    <input matInput name="name" [(ngModel)]="group.name" />
   </mat-form-field>
   <mat-form-field appearance="outline" class="form-control">
     <mat-label>Description</mat-label>
-    <textarea matInput></textarea>
+    <textarea
+      name="description"
+      matInput
+      [(ngModel)]="group.description"
+    ></textarea>
   </mat-form-field>
-  <app-symbol-selector width="100%"></app-symbol-selector>
+  <app-symbol-selector
+    width="100%"
+    (stockSymbolsChanged)="group.stocks = $event"
+  ></app-symbol-selector>
 
-  <button mat-raised-button color="primary">SAVE</button>
+  <button mat-raised-button color="primary" (click)="saveGroup()">SAVE</button>
 </form>

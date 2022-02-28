@@ -1,0 +1,27 @@
+<mat-list>
+  <mat-list-item *ngFor="let group of groups">
+    <mat-icon mat-list-icon>trending_up</mat-icon>
+    <div mat-line>{{ group.name }}</div>
+    <div mat-line>{{ group.description }}</div>
+    <div mat-line>
+      <mat-chip *ngFor="let stock of group.stocks">{{ stock }}</mat-chip>
+    </div>
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Search stocks"
+      *ngIf="canSearch"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      aria-label="Remove group"
+      *ngIf="canDelete"
+      (click)="deleteGroup(group.id!)"
+    >
+      <mat-icon>delete_outline</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
