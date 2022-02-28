@@ -23,6 +23,7 @@
   </mat-form-field>
   <app-symbol-selector
     width="100%"
+    [stocks]="stocks"
     (stockSymbolsChanged)="stocks = $event"
   ></app-symbol-selector>
 

@@ -9,8 +9,9 @@ import { MatChipInputEvent } from '@angular/material/chips';
 export class SymbolSelectorComponent {
   @Input() width: string;
   @Output() stockSymbolsChanged = new EventEmitter<string[]>();
+  @Input() stocks: string[] = [];
+
   readonly separatorKeysCodes = [13, 188, 32] as const;
-  stocks: string[] = [];
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
