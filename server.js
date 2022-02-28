@@ -46,3 +46,7 @@ app.get("/api/stock", async (req, res) => {
 
   res.status(200).send(data);
 });
+
+app.get("/*", async (req, res) => {
+  res.redirect("/");
+});
