@@ -35,6 +35,6 @@ export class SymbolSelectorComponent {
   }
 
   private updateStockList(): void {
-    this.stockSymbolsChanged.emit(this.stocks);
+    this.stockSymbolsChanged.emit([...this.stocks]);
   }
 }

@@ -1,6 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { StockGroup } from 'src/app/models';
 import { StockGroupService } from 'src/app/services/stock-group.service';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+}
 
 @Component({
   selector: 'app-stock-group-form',
@@ -8,20 +30,25 @@ import { StockGroupService } from 'src/app/services/stock-group.service';
   styleUrls: ['./stock-group-form.component.scss'],
 })
 export class StockGroupFormComponent implements OnInit {
-  private initialFormState = {
-    name: '',
-    description: '',
-    stocks: [],
-  };
+  groupForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl(''),
+    stocks: new FormControl([]),
+  });
 
-  group: StockGroup = { ...this.initialFormState };
+  matcher = new MyErrorStateMatcher();
 
   constructor(private stockGroupService: StockGroupService) {}
 
   ngOnInit(): void {}
 
-  saveGroup(): void {
-    this.stockGroupService.add(this.group);
-    this.group = { ...this.initialFormState };
+  submitGroup(groupForm: any): void {
+    const group: StockGroup = this.groupForm.value;
+
+    console.log(group);
+
+    this.stockGroupService.add(group);
+
+    groupForm.resetForm();
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -18,9 +18,9 @@ import { SharedModule } from '../shared/shared.module';
 
 import { StockGroupsComponent } from './components/stock-groups/stock-groups.component';
 import { StockGroupFormComponent } from './components/stock-groups/stock-group-form/stock-group-form.component';
-import { StockGroupsListComponent } from './components/shared/stock-groups-list/stock-groups-list.component';
 import { StockSearchComponent } from './components/stock-search/stock-search.component';
 import { StocksListComponent } from './components/stock-search/stocks-list/stocks-list.component';
+import { StockGroupsListComponent } from './components/shared/stock-groups-list/stock-groups-list.component';
 
 const routes: Routes = [
   { path: '', component: StockSearchComponent },
@@ -39,6 +39,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    ReactiveFormsModule,
 
     MatCardModule,
     MatProgressSpinnerModule,

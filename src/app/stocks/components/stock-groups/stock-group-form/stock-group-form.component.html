@@ -1,20 +1,32 @@
-<form class="stock-group-form">
+<form
+  [formGroup]="groupForm"
+  class="stock-group-form"
+  #groupw="ngForm"
+  (ngSubmit)="submitGroup(groupw)"
+>
   <mat-form-field appearance="outline" class="form-control">
     <mat-label>Name</mat-label>
-    <input matInput name="name" [(ngModel)]="group.name" />
+    <input
+      matInput
+      name="name"
+      formControlName="name"
+      [errorStateMatcher]="matcher"
+    />
   </mat-form-field>
   <mat-form-field appearance="outline" class="form-control">
     <mat-label>Description</mat-label>
     <textarea
       name="description"
       matInput
-      [(ngModel)]="group.description"
+      formControlName="description"
     ></textarea>
   </mat-form-field>
   <app-symbol-selector
     width="100%"
-    (stockSymbolsChanged)="group.stocks = $event"
+    (stockSymbolsChanged)="this.groupForm.controls['stocks'].setValue($event)"
   ></app-symbol-selector>
 
-  <button mat-raised-button color="primary" (click)="saveGroup()">SAVE</button>
+  <button [disabled]="groupForm.invalid" mat-raised-button color="primary">
+    SAVE
+  </button>
 </form>
