@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable } from 'rxjs';
 import { Stock } from 'src/app/models';
-import { StocksService } from 'src/app/services/stocks.service';
+import { StockService } from 'src/app/services/stock.service';
 
 export interface Fruit {
   name: string;
@@ -19,7 +19,7 @@ export class StockSearchComponent {
   stocks: string[] = [];
   stocks$: Observable<Stock[]>;
 
-  constructor(private stockService: StocksService) {}
+  constructor(private stockService: StockService) {}
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();

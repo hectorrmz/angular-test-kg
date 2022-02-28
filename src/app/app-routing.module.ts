@@ -14,12 +14,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
-  {
-    path: 'stocks',
-    loadChildren: () =>
-      import('./stocks/stocks.module').then((m) => m.StocksModule),
-  },
-  { path: '**', redirectTo: '/first' },
+
+  { path: '**', redirectTo: '/stocks' },
 ];
 
 @NgModule({

@@ -4,47 +4,18 @@
       <li
         class="menu-option"
         routerLinkActive="active"
-        [routerLink]="['/first']"
-      >
-        <button mat-button>
-          <mat-icon>home</mat-icon>
-          <span>First Page</span>
-        </button>
-      </li>
-      <li
-        class="menu-option"
-        routerLinkActive="active"
-        [routerLink]="['/second']"
-      >
-        <button mat-button>
-          <mat-icon>person</mat-icon>
-          <span>Second Page</span>
-        </button>
-      </li>
-      <li
-        class="menu-option"
-        routerLinkActive="active"
-        [routerLink]="['/stocks']"
-      >
-        <button mat-button>
-          <mat-icon>list</mat-icon>
-          <span>Stocks</span>
-        </button>
-      </li>
-      <li
-        class="menu-option"
-        routerLinkActive="active"
-        [routerLink]="['/stocks/search']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/']"
       >
         <button mat-button>
           <mat-icon>analytics</mat-icon>
-          <span>Stocks</span>
+          <span>Search Stocks</span>
         </button>
       </li>
       <li
         class="menu-option"
         routerLinkActive="active"
-        [routerLink]="['/stocks/groups']"
+        [routerLink]="['/groups']"
       >
         <button mat-button>
           <mat-icon>table_view</mat-icon>
