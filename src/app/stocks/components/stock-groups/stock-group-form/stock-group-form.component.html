@@ -23,10 +23,14 @@
   </mat-form-field>
   <app-symbol-selector
     width="100%"
-    (stockSymbolsChanged)="this.groupForm.controls['stocks'].setValue($event)"
+    (stockSymbolsChanged)="stocks = $event"
   ></app-symbol-selector>
 
-  <button [disabled]="groupForm.invalid" mat-raised-button color="primary">
+  <button
+    [disabled]="groupForm.invalid || stocks.length === 0"
+    mat-raised-button
+    color="primary"
+  >
     SAVE
   </button>
 </form>

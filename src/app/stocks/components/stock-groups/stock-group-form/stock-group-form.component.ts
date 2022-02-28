@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -29,26 +29,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './stock-group-form.component.html',
   styleUrls: ['./stock-group-form.component.scss'],
 })
-export class StockGroupFormComponent implements OnInit {
+export class StockGroupFormComponent {
   groupForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    stocks: new FormControl([]),
   });
+
+  stocks: string[] = [];
 
   matcher = new MyErrorStateMatcher();
 
   constructor(private stockGroupService: StockGroupService) {}
 
-  ngOnInit(): void {}
-
   submitGroup(groupForm: any): void {
     const group: StockGroup = this.groupForm.value;
-
-    console.log(group);
-
-    this.stockGroupService.add(group);
-
+    this.stockGroupService.add({ ...group, stocks: [...this.stocks] });
     groupForm.resetForm();
+    this.stocks = [];
   }
 }
