@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { StockGroup } from '../models';
 
 const MOCKED_GROUPS: StockGroup[] = [
@@ -21,21 +22,25 @@ const MOCKED_GROUPS: StockGroup[] = [
 })
 export class StockGroupService {
   private groups: StockGroup[] = [];
+  stockGroups = new BehaviorSubject<StockGroup[]>([]);
 
   constructor() {
     this.groups = MOCKED_GROUPS;
+    this.stockGroups.next(this.groups);
   }
 
-  getAll(): StockGroup[] {
-    return this.groups;
+  getAll(): Observable<StockGroup[]> {
+    return this.stockGroups.asObservable();
   }
 
   add(group: StockGroup): void {
     group = { ...group, id: Math.random() };
     this.groups.push(group);
+    this.stockGroups.next(this.groups);
   }
 
   remove(id: number): void {
     this.groups = this.groups.filter((group) => group.id != id);
+    this.stockGroups.next(this.groups);
   }
 }

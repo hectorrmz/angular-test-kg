@@ -46,4 +46,9 @@ export class StockSearchComponent {
       .getStocks(this.stocks)
       .pipe(map((apiResponse) => apiResponse.quoteResponse?.result));
   }
+
+  searchStocksSelected(stocks: string[]): void {
+    this.stocks = stocks;
+    this.searchStocks();
+  }
 }

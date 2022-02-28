@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let group of groups">
+  <mat-list-item *ngFor="let group of groups$ | async">
     <mat-icon mat-list-icon>trending_up</mat-icon>
     <div mat-line>{{ group.name }}</div>
     <div mat-line>{{ group.description }}</div>
@@ -11,6 +11,7 @@
       color="primary"
       aria-label="Search stocks"
       *ngIf="canSearch"
+      (click)="searchStockGroupSelected.emit(group.stocks)"
     >
       <mat-icon>search</mat-icon>
     </button>

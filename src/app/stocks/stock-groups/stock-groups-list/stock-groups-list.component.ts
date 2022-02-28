@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { StockGroup } from 'src/app/models';
 import { StockGroupService } from 'src/app/services/stock-group.service';
 
@@ -10,13 +11,15 @@ import { StockGroupService } from 'src/app/services/stock-group.service';
 export class StockGroupsListComponent implements OnInit {
   @Input() canDelete: boolean;
   @Input() canSearch: boolean;
+  @Output() searchStockGroupSelected = new EventEmitter<string[]>();
 
   groups: StockGroup[];
+  groups$: Observable<StockGroup[]>;
 
   constructor(private stockGroupService: StockGroupService) {}
 
   ngOnInit(): void {
-    this.groups = this.stockGroupService.getAll();
+    this.groups$ = this.stockGroupService.getAll();
   }
 
   deleteGroup(id: number): void {

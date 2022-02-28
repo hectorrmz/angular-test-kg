@@ -14,7 +14,7 @@ export class StockGroupFormComponent implements OnInit {
     stocks: [],
   };
 
-  group: StockGroup = this.initialFormState;
+  group: StockGroup = { ...this.initialFormState };
 
   constructor(private stockGroupService: StockGroupService) {}
 
@@ -22,5 +22,6 @@ export class StockGroupFormComponent implements OnInit {
 
   saveGroup(): void {
     this.stockGroupService.add(this.group);
+    this.group = { ...this.initialFormState };
   }
 }
